@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { v4 as uuidv4 } from "uuid";
+// =============
 class NewTodoForm extends Component {
   constructor(props) {
     super(props);
@@ -19,10 +20,10 @@ class NewTodoForm extends Component {
   // =====================
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.createToDo(this.state);
+    this.props.createToDo({ ...this.state, id: uuidv4() }); // agregar como Objeto
 
     this.setState({ task: "" });
-    console.log(this.state.task);
+    console.log(this.state.task); // aqui veo el tasks
   };
 
   //! ONSUBMIT ALWAYS ON **********FORM************!!!!!!!!!!!!!
