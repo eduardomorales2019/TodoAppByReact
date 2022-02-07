@@ -1,5 +1,5 @@
 import "./App.css";
-import TodoComponent from "./components/todo";
+
 import ToDoList from "./components/todoList";
 
 function App() {

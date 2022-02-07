@@ -7,7 +7,6 @@ class TodoComponent extends Component {
         <button>Edit</button>
         <button>X</button>
         <li>{this.props.task} </li>
-        <li> </li>
       </div>
     );
   }
