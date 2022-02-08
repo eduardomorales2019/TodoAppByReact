@@ -6,9 +6,13 @@ import React, { Component } from "react";
 class TodoComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { isEditing: false };
+    console.log(this.props.update);
+
+    this.state = { isEditing: false, task: this.props.task };
     this.handleRemove = this.handleRemove.bind(this);
-    this.isT = this.isToggling.bind(this);
+    this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.isToggling = this.isToggling.bind(this);
   }
 
   // ==================
@@ -20,9 +24,22 @@ class TodoComponent extends Component {
   isToggling = () => {
     this.setState({ isEditing: !this.isEditing });
   };
-  // ! here  i take  new task data and pass up to the parent.
+
+  // in this method we need  id and  updatedtask.. WE ARE ATACCHING ALL PROPERTY  CREATED  BY THE PROPS
+
+  // ! here  i take  new task data and pass up to the parent. so  i have to create a method and use down here after the preventdefault.
   handleUpdateSubmit = (event) => {
     event.preventDefault();
+    console.log("hola");
+    this.props.update(this.props.id, this.props.task);
+    this.setState({ isEditing: false }); // para salir del  editing mode.. and got save!!!
+  };
+
+  //! this method is for take all the values from input.
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
 
   //  ========================== use a variable to set the  manipulate the editing mode if is editiinf if flase:
@@ -32,7 +49,12 @@ class TodoComponent extends Component {
       result = (
         <div>
           <form onSubmit={this.handleUpdateSubmit}>
-            <input type="text"></input>
+            <input
+              type="text"
+              name="task"
+              value={this.state.task} // aqui tengo la duda!!! siempre di
+              onChange={this.handleChange} // valor al meter info
+            ></input>
             <button>Save</button>
           </form>
         </div>

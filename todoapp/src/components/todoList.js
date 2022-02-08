@@ -12,9 +12,10 @@ class ToDoList extends Component {
     };
     this.create = this.create.bind(this);
     this.removeToDo = this.removeToDo.bind(this);
+    this.isUpdating = this.isUpdating.bind(this);
   }
   //!! ======================CREATE=============================================
-  // ! WE HAVE TO PASS THAYT METHOD WE CRATE AS PROP IN THE COMPONENT.
+  // ! I HAVE TO PASS THAT METHOD  I CReaTE AS PROP IN THE COMPONENT.
   create = (NewTodoo) => {
     this.setState({ Todos: [...this.state.Todos, NewTodoo] });
   };
@@ -26,6 +27,18 @@ class ToDoList extends Component {
     });
   };
   // ===================================================================
+  isUpdating = (id, updatedtask) => {
+    const updateTodos = this.state.Todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, task: updatedtask };
+      }
+      return todo;
+    });
+    this.setState({ Todos: updateTodos }); // NOT MUTATE STATE DIRECTLY, WE  SET THE STATE WITH THE VARIANBLE CREATED  WITH ITS PROCESS
+    console.log(updateTodos, "Soy updated TODOS ");
+  };
+  // ===================================================================
+
   render() {
     //  important to set a variable with the mapping insteead doing all, not forget . its beeen a  month of using dadtabeses and  I just forget
 
@@ -34,12 +47,14 @@ class ToDoList extends Component {
     //? i add the remove method where the x button is
     //?  WE ARE PASSING PROPS IN THE TODO COMPONENT, THAT IS COMMING FROM THE MAP ARRAY
     const todos = this.state.Todos.map((todo) => {
+      //!  OJO CON ESTE MAP ESTOY PASANDO TODOS LOS  this.state.Todos a componente todo.js
       return (
         <TodoComponent
           key={todo.id}
           task={todo.task}
           remove={this.removeToDo}
           id={todo.id}
+          update={this.isUpdating}
         />
       );
     });
