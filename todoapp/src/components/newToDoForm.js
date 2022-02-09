@@ -20,7 +20,7 @@ class NewTodoForm extends Component {
   // =====================
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.createToDo({ ...this.state, id: uuidv4() }); // agregar como Objeto
+    this.props.createToDo({ ...this.state, id: uuidv4(), completed: false }); // agregar como Objeto
 
     this.setState({ task: "" });
     console.log(this.state.task); // aqui veo el tasks

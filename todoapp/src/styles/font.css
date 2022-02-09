@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Oxlade Demo';
+  src: url('Oxlade Demo.eot');
+  src: url('Oxlade Demo.eot?#iefix') format('embedded-opentype'),
+       url('Oxlade Demo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OxladeDemo';
+  src: url('OxladeDemo.svg#OxladeDemo') format('svg'),
+       url('OxladeDemo.ttf') format('truetype'),
+       url('OxladeDemo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+

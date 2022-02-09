@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "../styles/todo.css";
 //! HERE WE CRETE ALL TODO, SO EACH ONE IS GONNA  INCREASE A  NUMBER  AND IT MUST CREATE AND ID.
 
 //?  to to tge editing componene we must use a condition in the result.  so we have to the a state  : false " and play with it in the render"
@@ -13,6 +13,7 @@ class TodoComponent extends Component {
     this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.isToggling = this.isToggling.bind(this);
+    this.handleToogleCompleted = this.handleToogleCompleted.bind(this);
   }
 
   // ==================
@@ -42,6 +43,11 @@ class TodoComponent extends Component {
     });
   };
 
+  handleToogleCompleted = () => {
+    console.log("push");
+    this.props.toggleconfirmedTask(this.props.id); // pasar el id sino no funciona !
+  };
+
   //  ========================== use a variable to set the  manipulate the editing mode if is editiinf if flase:
   render() {
     let result;
@@ -64,7 +70,13 @@ class TodoComponent extends Component {
         <div>
           <button onClick={this.isToggling}>Edit</button>
           <button onClick={this.handleRemove}>X</button>
-          <li>{this.props.task} </li>
+          {/* rendeting class with conditional */}
+          <li
+            className={this.props.completed ? "completed" : ""}
+            onClick={this.handleToogleCompleted}
+          >
+            {this.props.task}{" "}
+          </li>
         </div>
       );
     }

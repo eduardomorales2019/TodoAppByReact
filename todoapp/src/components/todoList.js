@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NewTodoForm from "./newToDoForm";
 import TodoComponent from "./todo";
 import ErrorBondary from "./utils/ErrorBondary";
+import "../styles/Todolist.css";
 
 // ===================================================================
 class ToDoList extends Component {
@@ -13,6 +14,7 @@ class ToDoList extends Component {
     this.create = this.create.bind(this);
     this.removeToDo = this.removeToDo.bind(this);
     this.isUpdating = this.isUpdating.bind(this);
+    this.toogleConfirmation = this.toogleConfirmation.bind(this);
   }
   //!! ======================CREATE=============================================
   // ! I HAVE TO PASS THAT METHOD  I CReaTE AS PROP IN THE COMPONENT.
@@ -37,6 +39,18 @@ class ToDoList extends Component {
     this.setState({ Todos: updateTodos }); // NOT MUTATE STATE DIRECTLY, WE  SET THE STATE WITH THE VARIANBLE CREATED  WITH ITS PROCESS
     console.log(updateTodos, "Soy updated TODOS ");
   };
+  // ! THIS LOGIC , IS THE ONE IT TAKE TIME TO LEARN==========================same logic as the updatemethod.
+
+  toogleConfirmation = (id) => {
+    const Completeded = this.state.Todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    this.setState({ Todos: Completeded });
+    console.log(this.state);
+  };
   // ===================================================================
 
   render() {
@@ -55,17 +69,22 @@ class ToDoList extends Component {
           remove={this.removeToDo}
           id={todo.id}
           update={this.isUpdating}
+          completed={todo.completed}
+          toggleconfirmedTask={this.toogleConfirmation}
         />
       );
     });
     return (
-      <div>
-        <ErrorBondary>
-          <h1>Todo List </h1>
+      <ErrorBondary>
+        <div className="TodoList">
+          <h1>
+            Todo List <span> Simple React Todo List App</span>
+          </h1>
+
           <NewTodoForm createToDo={this.create} />
           <ul>{todos}</ul>
-        </ErrorBondary>
-      </div>
+        </div>
+      </ErrorBondary>
     );
   }
 }
