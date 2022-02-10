@@ -4,6 +4,8 @@ import TodoComponent from "./todo";
 import ErrorBondary from "./utils/ErrorBondary";
 import "../styles/Todolist.css";
 
+import logo from "../images/todoappvector.svg";
+
 // ===================================================================
 class ToDoList extends Component {
   constructor(props) {
@@ -77,6 +79,9 @@ class ToDoList extends Component {
     return (
       <ErrorBondary>
         <div className="TodoList">
+          {/* <div className="Logo"> */}
+          <img src={logo} alt="svg" width="80px"></img>
+          {/* </div> */}
           <h1>
             Todo List <span> Simple React Todo List App</span>
           </h1>
