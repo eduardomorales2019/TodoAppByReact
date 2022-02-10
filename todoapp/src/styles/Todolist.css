@@ -31,3 +31,20 @@
   font-family: "Oxlade Demo";
   text-shadow: 1px 1px 8px rgb(190, 20, 20);
 }
+
+.Todo-buttons {
+  display: flex;
+
+  width: 155px;
+  justify-content: space-between;
+}
+
+.Todo-buttons button {
+  border: none;
+  font-size: 1.3em;
+  margin: 0.4em;
+  background: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: white;
+}

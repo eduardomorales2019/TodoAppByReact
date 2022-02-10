@@ -81,8 +81,8 @@ class ToDoList extends Component {
             Todo List <span> Simple React Todo List App</span>
           </h1>
 
-          <NewTodoForm createToDo={this.create} />
           <ul>{todos}</ul>
+          <NewTodoForm createToDo={this.create} />
         </div>
       </ErrorBondary>
     );

@@ -53,7 +53,7 @@ class TodoComponent extends Component {
     let result;
     if (this.state.isEditing) {
       result = (
-        <div>
+        <div className="Todo">
           <form onSubmit={this.handleUpdateSubmit}>
             <input
               type="text"
@@ -67,16 +67,24 @@ class TodoComponent extends Component {
       );
     } else {
       result = (
-        <div>
-          <button onClick={this.isToggling}>Edit</button>
-          <button onClick={this.handleRemove}>X</button>
-          {/* rendeting class with conditional */}
+        <div className="Todo">
           <li
-            className={this.props.completed ? "completed" : ""}
+            className={
+              this.props.completed ? "Todo-task completed" : "Todo-task"
+            }
             onClick={this.handleToogleCompleted}
           >
             {this.props.task}{" "}
           </li>
+          <div className="Todo-buttons">
+            <button onClick={this.isToggling}>
+              <i class="fa fa-pen"></i>
+            </button>
+            <button onClick={this.handleRemove}>
+              <i class="fa fa-trash"></i>{" "}
+            </button>
+            {/* rendeting class with conditional */}
+          </div>
         </div>
       );
     }
