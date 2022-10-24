@@ -6,14 +6,15 @@ import "../styles/todo.css";
 class TodoComponent extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.update);
-
+    // console.log(this.props.update);
+    console.log(props, "Im props");
     this.state = { isEditing: false, task: this.props.task };
     this.handleRemove = this.handleRemove.bind(this);
     this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.isToggling = this.isToggling.bind(this);
     this.handleToogleCompleted = this.handleToogleCompleted.bind(this);
+    // this.update = this.update.bind(this);
   }
 
   // ==================
@@ -31,8 +32,10 @@ class TodoComponent extends Component {
   // ! here  i take  new task data and pass up to the parent. so  i have to create a method and use down here after the preventdefault.
   handleUpdateSubmit = (event) => {
     event.preventDefault();
-    console.log("hola");
-    this.props.update(this.props.id, this.props.task);
+
+    // new task to save !!!
+    // console.log("hola");
+    this.props.update(this.props.id, this.state.task);
     this.setState({ isEditing: false }); // para salir del  editing mode.. and got save!!!
   };
 
@@ -44,11 +47,21 @@ class TodoComponent extends Component {
   };
 
   handleToogleCompleted = () => {
-    console.log("push");
+    // console.log("push");
     this.props.toggleconfirmedTask(this.props.id); // pasar el id sino no funciona !
   };
 
   //  ========================== use a variable to set the  manipulate the editing mode if is editiinf if flase:
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, "soy prevProps");
+    console.log(prevState, "soy prevState");
+  }
+
+  // =============
+
+  // ==================
+
   render() {
     let result;
     if (this.state.isEditing) {
@@ -78,10 +91,10 @@ class TodoComponent extends Component {
           </li>
           <div className="Todo-buttons">
             <button onClick={this.isToggling}>
-              <i class="fa fa-pen"></i>
+              <i className="fa fa-pen"></i>
             </button>
             <button onClick={this.handleRemove}>
-              <i class="fa fa-trash"></i>{" "}
+              <i className="fa fa-trash"></i>{" "}
             </button>
             {/* rendeting class with conditional */}
           </div>

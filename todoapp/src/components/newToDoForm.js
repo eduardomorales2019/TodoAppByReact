@@ -24,7 +24,7 @@ class NewTodoForm extends Component {
     this.props.createToDo({ ...this.state, id: uuidv4(), completed: false }); // agregar como Objeto
 
     this.setState({ task: "" });
-    console.log(this.state.task); // aqui veo el tasks
+    // console.log(this.state.task); // aqui veo el tasks
   };
 
   //! ONSUBMIT ALWAYS ON **********FORM************!!!!!!!!!!!!!

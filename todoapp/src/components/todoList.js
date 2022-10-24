@@ -51,7 +51,7 @@ class ToDoList extends Component {
       return todo;
     });
     this.setState({ Todos: Completeded });
-    console.log(this.state);
+    // console.log(this.state);
   };
   // ===================================================================
 
